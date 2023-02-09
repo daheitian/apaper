@@ -1,0 +1,37 @@
+{
+  "name": "pixcall-tools",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "watch:css": "postcss build src/css/tailwind.css -o dist/css/tailwind.css --watch",
+    "build:css": "postcss src/css/tailwind.css -o dist/css/tailwind.css",
+    "build:min:css": "cross-env NODE_ENV=production postcss src/css/tailwind.css -o dist/css/tailwind.css",
+    "build:js": "babel src/js -d dist/js --copy-files",
+    "build:min:js": "babel src/js -d dist/js --presets minify",
+    "build:static": "cp -R src/images dist/images && cp src/index.html dist && cp src/favicon.ico dist",
+    "build": "yarn clean && yarn build:min:js && yarn build:min:css && yarn build:static"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^10.4.0",
+    "cssnano": "^5.0.12",
+    "cssnano-preset-advanced": "^5.1.8",
+    "postcss": "^8.4.4",
+    "postcss-clean": "^1.2.2",
+    "postcss-import": "^14.0.2",
+    "postcss-loader": "^6.2.1",
+    "postcss-nested": "^5.0.6"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.18.9",
+    "@babel/core": "^7.18.9",
+    "@babel/preset-env": "^7.18.9",
+    "babel-preset-minify": "^0.5.2",
+    "cross-env": "^7.0.3",
+    "postcss-cli": "^9.0.2",
+    "tailwindcss": "^3.1.6"
+  }
+}
